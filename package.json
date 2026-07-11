@@ -1,0 +1,14 @@
+{
+  "name": "shahid-portfolio",
+  "version": "1.0.0",
+  "description": "Data-driven personal portfolio. All content lives in data/portfolio-data.js.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "start": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
