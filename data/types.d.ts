@@ -136,15 +136,9 @@ export interface SpokenLanguage {
   level: number;
 }
 
-export interface Reference {
-  name: string;
-  /** Role / relationship line. */
-  detail: string;
-  email?: string;
-}
-
 export interface Contact {
   emails: string[];
+  phones: string[];
 }
 
 /** The complete portfolio content. One object = the entire site. */
@@ -164,6 +158,5 @@ export interface PortfolioData {
   projects: Project[];
   spokenLanguages: SpokenLanguage[];
   interests: string[];
-  references: Reference[];
   contact: Contact;
 }

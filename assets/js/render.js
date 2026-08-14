@@ -341,33 +341,41 @@ function renderInterests() {
   render("interests-list", items);
 }
 
-/* --------------------------------------------------------------- references */
-
-function renderReferences() {
-  const items = data.references
-    .map(
-      (r) => `
-        <div class="resume-item-n">
-          <h4>${esc(r.name)}</h4>
-          <p><em>${esc(r.detail)}${
-            r.email ? `<br><code>${esc(r.email)}</code>` : ""
-          }</em></p>
-        </div>`
-    )
-    .join("");
-  render("references-list", items);
-}
-
 /* ------------------------------------------------------------------ contact */
 
 function renderContact() {
-  const emails = data.contact.emails
-    .map((e) => `<h5><code>${esc(e)}</code></h5>`)
-    .join("<br>");
-  render(
-    "contact-content",
-    `<div class="resume-item-n"><h4>Email</h4>${emails}</div>`
+  const contact = data.contact || {};
+  const emails = Array.isArray(contact.emails) ? contact.emails : [];
+  const phones = Array.isArray(contact.phones) ? contact.phones : [];
+  const location = data.profile && data.profile.location;
+
+  /** @param {string} icon @param {string} label @param {string} value @param {string | null} href */
+  const card = (icon, label, value, href) => {
+    const inner = `
+      <span class="contact-icon"><i class="${icon}"></i></span>
+      <div class="contact-meta">
+        <span class="contact-label">${esc(label)}</span>
+        <span class="contact-value">${esc(value)}</span>
+      </div>`;
+    return href
+      ? `<a class="contact-card resume-item-n" href="${esc(href)}">${inner}</a>`
+      : `<div class="contact-card resume-item-n">${inner}</div>`;
+  };
+
+  const emailCards = emails.map((e) =>
+    card("bi bi-envelope-fill", "Email", e, `mailto:${e}`)
   );
+  const phoneCards = phones.map((p) => {
+    const tel = String(p).replace(/[^\d+]/g, "");
+    return card("bi bi-telephone-fill", "Phone", p, `tel:${tel}`);
+  });
+  const locationCard = location
+    ? [card("bi bi-geo-alt-fill", "Location", location, null)]
+    : [];
+
+  const cards = [...emailCards, ...phoneCards, ...locationCard].join("");
+  if (!cards) return;
+  render("contact-content", `<div class="contact-grid">${cards}</div>`);
 }
 
 /* ------------------------------------------------------------------- footer */
@@ -383,18 +391,25 @@ function renderFooter() {
 
 /* --------------------------------------------------------------------- boot */
 
-renderProfile();
-renderNavigation();
-renderHero();
-renderAbout();
-renderEducation();
-renderExperience();
-renderSkills();
-renderOtherSkills();
-renderTools();
-renderProjects();
-renderLanguages();
-renderInterests();
-renderReferences();
-renderContact();
-renderFooter();
+[
+  renderProfile,
+  renderNavigation,
+  renderHero,
+  renderAbout,
+  renderEducation,
+  renderExperience,
+  renderSkills,
+  renderOtherSkills,
+  renderTools,
+  renderProjects,
+  renderLanguages,
+  renderInterests,
+  renderContact,
+  renderFooter,
+].forEach((fn) => {
+  try {
+    fn();
+  } catch (err) {
+    console.error(`[portfolio] ${fn.name} failed`, err);
+  }
+});

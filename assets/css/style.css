@@ -933,44 +933,73 @@ section {
 }
 
 /*--------------------------------------------------------------
-# References & Contact
+# Contact
 --------------------------------------------------------------*/
-#references-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+#contact {
+  overflow: visible;
 }
-#references-list .resume-item-n {
-  margin-bottom: 0;
-  height: 100%;
+#contact .contact-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
 }
-@media (max-width: 992px) {
-  #references-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
+#contact .contact-card {
+  display: flex !important;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+  padding: 22px 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  text-decoration: none;
+  color: #fff;
+  min-height: 88px;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none;
 }
-@media (max-width: 575px) {
-  #references-list {
+#contact a.contact-card:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #fff;
+  transform: translateY(-3px);
+}
+#contact .contact-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #22d3ee 100%);
+  color: #fff;
+  font-size: 22px;
+}
+#contact .contact-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+#contact .contact-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #9aa6bd;
+  margin-bottom: 4px;
+}
+#contact .contact-value {
+  font-size: 15.5px;
+  font-weight: 500;
+  color: #fff;
+  word-break: break-word;
+}
+@media (max-width: 768px) {
+  #contact .contact-grid {
     grid-template-columns: 1fr;
   }
-}
-#references .resume-item-n h4 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 8px;
-}
-#references .resume-item-n em {
-  font-style: normal;
-  color: var(--text-muted);
-}
-code {
-  color: var(--accent-2);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  padding: 3px 9px;
-  border-radius: 8px;
-  font-size: 13.5px;
 }
 
 /*--------------------------------------------------------------

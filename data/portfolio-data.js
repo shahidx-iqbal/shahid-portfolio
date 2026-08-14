@@ -32,8 +32,8 @@ export const portfolioData = {
     profileImage: "assets/img/profile-img.jpeg",
     location: "Pakistan",
     birthday: "01 March 1996",
-    email: "ishahid116@gmail.com",
-    altEmail: "shahid@14kbsol.com",
+    email: "info.shahidiqbal7@gmail.com",
+    phone: "+92 341 1099735",
     typedRoles: [
       "Flutter Developer",
       "Mobile Application Developer",
@@ -56,7 +56,7 @@ export const portfolioData = {
     { label: "Skills", href: "#skills", icon: "bi bi-code-slash" },
     { label: "Projects", href: "#projects", icon: "bi bi-kanban" },
     { label: "Languages & Interests", href: "#languages", icon: "bi bi-translate" },
-    { label: "References & Contact", href: "#references", icon: "bi bi-envelope" },
+    { label: "Contact", href: "#contact", icon: "bi bi-envelope" },
   ],
 
   /* ----------------------------------------------------------------- resume */
@@ -92,6 +92,7 @@ export const portfolioData = {
         link: "https://shahidx-iqbal.github.io/shahid-portfolio/",
       },
       { label: "Email", value: "info.shahidiqbal7@gmail.com" },
+      { label: "Phone", value: "+92 341 1099735" },
     ],
   },
 
@@ -355,7 +356,7 @@ export const portfolioData = {
         "GetX",
         "Push Notifications",
       ],
-      images: [],
+      images: ["assets/img/projects/stop_pick.png"],
       appStoreLink: null,
       playStoreLink: null,
       webLink: null,
@@ -375,28 +376,9 @@ export const portfolioData = {
   /* -------------------------------------------------------------- interests */
   interests: ["Hiking", "Nature", "Camping", "Fitness", "Technology"],
 
-  /* ------------------------------------------------------------- references */
-  references: [
-    {
-      name: "Ihsan Ullah",
-      detail:
-        "Founder @ Pixel io Technologies, Research Software Engineer ChaLearn, USA",
-      email: "ihsan2131@gmail.com",
-    },
-    {
-      name: "Ayyan Babar",
-      detail: "Co Founder @ Appalo Inc",
-      email: "ayyanbabar11@gmail.com",
-    },
-    {
-      name: "Dr. Sayed A Kazmi",
-      detail: "Co Founder @ 14 K Business Solutions",
-      email: "syed.kazmi@14kbsol.com",
-    },
-  ],
-
   /* ---------------------------------------------------------------- contact */
   contact: {
-    emails: ["ishahid116@gmail.com", "shahid@14kbsol.com"],
+    emails: ["info.shahidiqbal7@gmail.com", "ishahid116@gmail.com"],
+    phones: ["+92 341 1099735", "+92 317 7727452"],
   },
 };
